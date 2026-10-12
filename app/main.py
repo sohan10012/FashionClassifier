@@ -17,16 +17,15 @@ st.set_page_config(
 
 # ---------------------------------------------------------------------------
 # HTML Rendering Helper
-# Strips all leading indentation to prevent Markdown from interpreting
-# indented HTML lines as code blocks.
+# Strips leading indentation from each line so Markdown parser NEVER interprets
+# HTML lines as indented code blocks.
 # ---------------------------------------------------------------------------
 def render_html(html_str: str):
     clean_html = "\n".join(line.strip() for line in html_str.strip().splitlines())
     st.markdown(clean_html, unsafe_allow_html=True)
 
 # ---------------------------------------------------------------------------
-# Custom CSS: Premium Dark Mode UI
-# Obsidian Void • Electric Violet • Emerald Accents • Sleek Glassmorphism
+# Custom CSS: Dark Mode Haute Couture Aesthetic
 # ---------------------------------------------------------------------------
 render_html(
     """
@@ -37,22 +36,19 @@ render_html(
     .stApp {
         background-color: #0a0a0f !important;
         background-image: 
-            radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.12) 0px, transparent 55%),
+            radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.14) 0px, transparent 55%),
             radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 55%) !important;
         color: #f8f7fa !important;
         font-family: 'Inter', -apple-system, sans-serif !important;
     }
 
-    /* Hide standard Streamlit header and footer */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
 
-    /* Typography Hierarchy */
     h1, h2, h3, h4 {
         font-family: 'Playfair Display', Georgia, serif !important;
         color: #f8f7fa !important;
-        letter-spacing: -0.01em !important;
     }
 
     p, span, label {
@@ -63,11 +59,11 @@ render_html(
         font-family: 'JetBrains Mono', monospace !important;
     }
 
-    /* Header Banner */
+    /* Top Editorial Header */
     .top-header {
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         padding-bottom: 1.25rem;
-        margin-bottom: 1.75rem;
+        margin-bottom: 1.5rem;
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
@@ -84,12 +80,12 @@ render_html(
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin: 0;
-        line-height: 1.2;
+        line-height: 1.15;
     }
 
     .brand-tagline {
         font-family: 'Inter', sans-serif;
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         color: #a19fad;
         letter-spacing: 0.12em;
         text-transform: uppercase;
@@ -133,11 +129,11 @@ render_html(
         100% { opacity: 1; transform: scale(1); }
     }
 
-    /* Vitrine Cards */
+    /* Cohesive Vitrine Cards */
     .vitrine-card {
-        background: rgba(18, 17, 26, 0.72);
+        background: rgba(18, 17, 26, 0.75);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 8px;
+        border-radius: 10px;
         padding: 1.5rem;
         backdrop-filter: blur(28px);
         -webkit-backdrop-filter: blur(28px);
@@ -149,14 +145,14 @@ render_html(
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         padding-bottom: 0.75rem;
     }
 
     .card-title {
         font-family: 'Playfair Display', serif;
-        font-size: 1.15rem;
+        font-size: 1.18rem;
         font-weight: 500;
         color: #f8f7fa;
         margin: 0;
@@ -167,17 +163,90 @@ render_html(
 
     .card-meta {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.7rem;
+        font-size: 0.72rem;
         color: #8b5cf6;
         letter-spacing: 0.08em;
         text-transform: uppercase;
+    }
+
+    /* Uniform Preset Buttons */
+    .stButton > button {
+        background: rgba(255, 255, 255, 0.04) !important;
+        color: #e4e1e9 !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 6px !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.8rem !important;
+        font-weight: 500 !important;
+        height: 42px !important;
+        min-height: 42px !important;
+        max-height: 42px !important;
+        line-height: 42px !important;
+        padding: 0 0.5rem !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.2s ease !important;
+        box-shadow: none !important;
+    }
+
+    .stButton > button:hover {
+        background: rgba(139, 92, 246, 0.25) !important;
+        border-color: rgba(192, 132, 252, 0.5) !important;
+        color: #ffffff !important;
+        box-shadow: 0 0 16px rgba(139, 92, 246, 0.35) !important;
+        transform: translateY(-1px) !important;
+    }
+
+    /* File Uploader Restyling */
+    [data-testid="stFileUploader"] {
+        background: rgba(10, 10, 15, 0.45) !important;
+        border: 1px dashed rgba(139, 92, 246, 0.35) !important;
+        border-radius: 8px !important;
+        padding: 0.75rem !important;
+        transition: border-color 0.2s ease;
+    }
+
+    [data-testid="stFileUploader"]:hover {
+        border-color: rgba(139, 92, 246, 0.75) !important;
+    }
+
+    /* Image Display Frame */
+    .image-stage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: rgba(10, 10, 15, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        padding: 1.25rem;
+        margin-top: 0.5rem;
+    }
+
+    [data-testid="stImage"] img {
+        border-radius: 8px !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8) !important;
+        max-width: 250px !important;
+        max-height: 250px !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
+        display: block;
+        margin: 0 auto;
+        image-rendering: -webkit-optimize-contrast;
     }
 
     /* Prediction Showcase Card */
     .prediction-hero {
         background: linear-gradient(145deg, rgba(26, 24, 38, 0.88) 0%, rgba(18, 17, 26, 0.95) 100%);
         border: 1px solid rgba(139, 92, 246, 0.38);
-        border-radius: 8px;
+        border-radius: 10px;
         padding: 1.75rem;
         box-shadow: 0 0 32px -4px rgba(139, 92, 246, 0.22);
         margin-bottom: 1.5rem;
@@ -345,56 +414,12 @@ render_html(
         color: #10b981;
         font-weight: 600;
     }
-
-    /* Preset Selection Buttons */
-    .stButton > button {
-        background: rgba(255, 255, 255, 0.04) !important;
-        color: #cbc3d7 !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        border-radius: 6px !important;
-        font-family: 'Inter', sans-serif !important;
-        font-size: 0.78rem !important;
-        font-weight: 500 !important;
-        padding: 0.45rem 0.6rem !important;
-        width: 100% !important;
-        transition: all 0.2s ease !important;
-        box-shadow: none !important;
-    }
-
-    .stButton > button:hover {
-        background: rgba(139, 92, 246, 0.25) !important;
-        border-color: rgba(192, 132, 252, 0.5) !important;
-        color: #ffffff !important;
-        transform: translateY(-1px) !important;
-    }
-
-    /* Uploader Restyling */
-    [data-testid="stFileUploader"] {
-        background: rgba(18, 17, 26, 0.45) !important;
-        border: 1px dashed rgba(139, 92, 246, 0.35) !important;
-        border-radius: 8px !important;
-        padding: 0.75rem !important;
-        transition: border-color 0.2s ease;
-    }
-
-    [data-testid="stFileUploader"]:hover {
-        border-color: rgba(139, 92, 246, 0.75) !important;
-    }
-
-    /* Single Image Framing */
-    [data-testid="stImage"] img {
-        border-radius: 8px !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7) !important;
-        display: block;
-        margin: 0 auto;
-    }
     </style>
     """
 )
 
 # ---------------------------------------------------------------------------
-# Fashion-MNIST Taxonomy & All-English Fashion Metadata
+# Fashion-MNIST Taxonomy & All-English Metadata
 # ---------------------------------------------------------------------------
 CLASS_METADATA = {
     0: {
@@ -514,16 +539,22 @@ except Exception as e:
     model_error = str(e)
 
 # ---------------------------------------------------------------------------
-# Image Preprocessing & Model Prediction
+# Preprocessing Helper (Auto-detects light vs dark backgrounds)
 # ---------------------------------------------------------------------------
 def preprocess_image(pil_img: Image.Image) -> np.ndarray:
-    """Preprocess image to normalized (1, 28, 28, 1) float array."""
-    gray_img = pil_img.convert("L").resize((28, 28), Image.Resampling.LANCZOS)
-    arr = np.array(gray_img, dtype=np.float32) / 255.0
+    gray = pil_img.convert("L")
+    arr_raw = np.array(gray)
+    # If corners are bright (white background product shot), invert so garment is bright on dark
+    corners = [arr_raw[0, 0], arr_raw[0, -1], arr_raw[-1, 0], arr_raw[-1, -1]]
+    if np.mean(corners) > 128:
+        arr_raw = 255 - arr_raw
+        gray = Image.fromarray(arr_raw)
+
+    gray_resized = gray.resize((28, 28), Image.Resampling.LANCZOS)
+    arr = np.array(gray_resized, dtype=np.float32) / 255.0
     return arr.reshape((1, 28, 28, 1))
 
 def predict_fashion_item(img_tensor: np.ndarray):
-    """Run neural inference and return calibrated softmax probabilities."""
     start_time = time.perf_counter()
     logits = model.predict(img_tensor, verbose=0)
     probabilities = tf.nn.softmax(logits).numpy()[0]
@@ -544,7 +575,7 @@ render_html(
         <div class="telemetry-badges">
             <div class="telemetry-badge">
                 <span class="pulse-dot"></span>
-                <span>NEURAL ENGINE READY</span>
+                <span>NEURAL ENGINE ACTIVE</span>
             </div>
             <div class="telemetry-badge">
                 <span>TENSORFLOW 2.15</span>
@@ -565,99 +596,85 @@ if not model_ready:
     st.stop()
 
 # ---------------------------------------------------------------------------
-# Preset Sample Wardrobe Locator (10 High Confidence Sample Garments)
+# High-Resolution Preset Wardrobe Setup
 # ---------------------------------------------------------------------------
 base_dir = os.path.dirname(os.path.abspath(__file__))
-preset_candidates = [
-    os.path.join(base_dir, "sample_wardrobe"),
-    os.path.join(base_dir, "..", "test_images", "sample_wardrobe"),
-    os.path.join(base_dir, "test_images", "sample_wardrobe"),
-    os.path.join(base_dir, "test_images"),
-    os.path.join(base_dir, "..", "test_images"),
-]
+preset_dir = os.path.join(base_dir, "sample_wardrobe")
 
-preset_dir = None
-for p in preset_candidates:
-    if os.path.exists(p) and len([f for f in os.listdir(p) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]) >= 3:
-        preset_dir = p
-        break
-
-# Map preset files to nice English labels with icons
+# Concise 1-word labels to prevent button text wrapping
 PRESET_ITEMS = [
-    {"label": "👕 T-shirt", "filename": "00_t-shirt.png", "class_name": "T-shirt / Top"},
-    {"label": "👖 Trouser", "filename": "01_trouser.png", "class_name": "Trouser"},
-    {"label": "🧶 Pullover", "filename": "02_pullover.png", "class_name": "Pullover"},
-    {"label": "👗 Dress", "filename": "03_dress.png", "class_name": "Dress"},
-    {"label": "🧥 Coat", "filename": "04_coat.png", "class_name": "Coat"},
-    {"label": "👡 Sandal", "filename": "05_sandal.png", "class_name": "Sandal"},
-    {"label": "👔 Shirt", "filename": "06_shirt.png", "class_name": "Shirt"},
-    {"label": "👟 Sneaker", "filename": "07_sneaker.png", "class_name": "Sneaker"},
-    {"label": "👜 Bag", "filename": "08_bag.png", "class_name": "Bag"},
-    {"label": "🥾 Ankle Boot", "filename": "09_ankle_boot.png", "class_name": "Ankle Boot"},
+    {"label": "👕 T-Shirt", "file": "00_t-shirt.png", "title": "T-Shirt"},
+    {"label": "👖 Trouser", "file": "01_trouser.png", "title": "Trouser"},
+    {"label": "🧶 Sweater", "file": "02_pullover.png", "title": "Pullover Sweater"},
+    {"label": "👗 Dress", "file": "03_dress.png", "title": "Dress"},
+    {"label": "🧥 Coat", "file": "04_coat.png", "title": "Overcoat"},
+    {"label": "👡 Sandal", "file": "05_sandal.png", "title": "Sandal"},
+    {"label": "👔 Shirt", "file": "06_shirt.png", "title": "Button Shirt"},
+    {"label": "👟 Sneaker", "file": "07_sneaker.png", "title": "Sneaker"},
+    {"label": "👜 Bag", "file": "08_bag.png", "title": "Handbag"},
+    {"label": "🥾 Boot", "file": "09_ankle_boot.png", "title": "Ankle Boot"},
 ]
 
-# Initialize Session State for Selection
+# Initialize Session State
 if "current_image" not in st.session_state:
-    # Default to first preset if available
-    default_img_path = None
-    if preset_dir:
-        candidate = os.path.join(preset_dir, "00_t-shirt.png")
-        if os.path.exists(candidate):
-            default_img_path = candidate
-        else:
-            files = [f for f in sorted(os.listdir(preset_dir)) if f.lower().endswith(('.png', '.jpg'))]
-            if files:
-                default_img_path = os.path.join(preset_dir, files[0])
-
-    if default_img_path:
-        st.session_state["current_image"] = Image.open(default_img_path)
-        st.session_state["current_label"] = "Preset: T-shirt"
+    default_path = os.path.join(preset_dir, "00_t-shirt.png")
+    if os.path.exists(default_path):
+        st.session_state["current_image"] = Image.open(default_path)
+        st.session_state["current_label"] = "Preset: T-Shirt"
     else:
         st.session_state["current_image"] = None
         st.session_state["current_label"] = ""
 
 # ---------------------------------------------------------------------------
-# Main Layout: Left Column (Inputs & Preview) & Right Column (Results)
+# Main Layout: Left Column (Inputs & Preview) | Right Column (Predictions)
 # ---------------------------------------------------------------------------
 col_input, col_results = st.columns([1.05, 1.35], gap="large")
 
 with col_input:
-    # 1. Preset Images Selection alongside Upload
+    # Card 1: Curated Selection & Upload
     render_html(
         """
         <div class="vitrine-card">
             <div class="card-title-bar">
-                <h3 class="card-title">✦ Choose an Image</h3>
-                <span class="card-meta">Instant Presets & Upload</span>
+                <h3 class="card-title">✦ Garment Selection</h3>
+                <span class="card-meta">Presets & Upload</span>
             </div>
-            <p style="font-size: 0.84rem; color: #a19fad; margin-bottom: 0.85rem;">
-                Select any preloaded garment below to test instantly, or upload your own image.
+            <p style="font-size: 0.83rem; color: #a19fad; margin-bottom: 0.75rem;">
+                Click any of the 10 preset garments below to test immediately, or upload your own photo:
             </p>
         </div>
         """
     )
 
-    st.markdown("**✦ Instant Preset Garments:**")
-    # Render preset buttons in 2 compact rows of 5 columns
-    p_rows = [PRESET_ITEMS[:5], PRESET_ITEMS[5:]]
-    for row in p_rows:
-        cols = st.columns(len(row))
-        for i, item in enumerate(row):
-            with cols[i]:
-                if st.button(item["label"], key=f"btn_{item['filename']}"):
-                    if preset_dir:
-                        path = os.path.join(preset_dir, item["filename"])
-                        if os.path.exists(path):
-                            st.session_state["current_image"] = Image.open(path)
-                            st.session_state["current_label"] = f"Preset: {item['class_name']}"
+    # 10 Preset Buttons in 2 even rows of 5 columns (short labels that never wrap)
+    row1 = PRESET_ITEMS[:5]
+    row2 = PRESET_ITEMS[5:]
+
+    cols1 = st.columns(5)
+    for i, item in enumerate(row1):
+        with cols1[i]:
+            if st.button(item["label"], key=f"btn_{item['file']}"):
+                p_path = os.path.join(preset_dir, item["file"])
+                if os.path.exists(p_path):
+                    st.session_state["current_image"] = Image.open(p_path)
+                    st.session_state["current_label"] = f"Preset: {item['title']}"
+
+    cols2 = st.columns(5)
+    for i, item in enumerate(row2):
+        with cols2[i]:
+            if st.button(item["label"], key=f"btn_{item['file']}"):
+                p_path = os.path.join(preset_dir, item["file"])
+                if os.path.exists(p_path):
+                    st.session_state["current_image"] = Image.open(p_path)
+                    st.session_state["current_label"] = f"Preset: {item['title']}"
 
     st.markdown("<div style='margin-top: 1rem;'></div>", unsafe_allow_html=True)
-    st.markdown("**✦ Or Upload Custom Image:**")
+
     uploaded_file = st.file_uploader(
-        "Upload Fashion Item",
+        "Upload Custom Apparel Image",
         type=["jpg", "jpeg", "png", "webp"],
-        label_visibility="collapsed",
-        help="Upload a centered fashion item photograph (JPG, PNG, WEBP)",
+        label_visibility="visible",
+        help="Upload a centered apparel photo (JPG, PNG, WEBP)",
     )
 
     if uploaded_file is not None:
@@ -665,38 +682,41 @@ with col_input:
             st.session_state["current_image"] = Image.open(uploaded_file)
             st.session_state["current_label"] = f"Uploaded: {uploaded_file.name}"
         except Exception as err:
-            st.error(f"Unable to read uploaded image: {err}")
+            st.error(f"Image load error: {err}")
 
-    # 2. Selected Image Preview (Clean Single Image Only - No 2nd image!)
+    # Card 2: Unified Specimen Preview Card (Clean, Framed, Crisp)
     active_img = st.session_state.get("current_image")
     active_lbl = st.session_state.get("current_label", "")
 
     if active_img is not None:
+        w, h = active_img.size
         render_html(
             f"""
-            <div class="vitrine-card" style="margin-top: 1.5rem;">
+            <div class="vitrine-card" style="margin-top: 1.25rem;">
                 <div class="card-title-bar">
-                    <h3 class="card-title">✦ Selected Image</h3>
-                    <span class="card-meta">{active_img.size[0]}×{active_img.size[1]} PX</span>
+                    <h3 class="card-title">✦ Specimen Vitrine</h3>
+                    <span class="card-meta">{w}×{h} PX • {active_img.format or 'PNG'}</span>
+                </div>
+                <div style="font-size: 0.8rem; color: #cbc3d7; margin-bottom: 0.75rem;">
+                    Active Source: <strong style="color: #ffffff;">{active_lbl}</strong>
                 </div>
             </div>
             """
         )
 
-        try:
-            st.image(active_img, caption=active_lbl, use_column_width=True)
-        except TypeError:
-            st.image(active_img, caption=active_lbl, use_container_width=True)
-
-    else:
-        st.info("Select a preset garment above or upload a photograph to view classification.")
+        # Centered, crisp image preview (Fixed width=240 so it is never stretched or blurry!)
+        col_pad1, col_center, col_pad2 = st.columns([0.2, 0.6, 0.2])
+        with col_center:
+            try:
+                st.image(active_img, width=240)
+            except Exception:
+                st.image(active_img)
 
 # ---------------------------------------------------------------------------
-# Right Column: Neural Inference & Classification Results
+# Right Column: Neural Inference & Results Showcase
 # ---------------------------------------------------------------------------
 with col_results:
     if active_img is not None:
-        # Preprocess and execute inference
         img_tensor = preprocess_image(active_img)
         top_idx, probabilities, latency_ms = predict_fashion_item(img_tensor)
 
@@ -718,7 +738,7 @@ with col_results:
                     </div>
                     <div class="telemetry-cell">
                         <div class="telemetry-num">{latency_ms:.1f} <span style="font-size: 0.75rem; color: #a19fad;">ms</span></div>
-                        <div class="confidence-label">Inference Time</div>
+                        <div class="confidence-label">Inference Latency</div>
                     </div>
                     <div class="telemetry-cell">
                         <div class="telemetry-text">Deep CNN</div>
@@ -753,7 +773,7 @@ with col_results:
             '<div class="vitrine-card">',
             '  <div class="card-title-bar">',
             '    <h3 class="card-title">✦ Class Confidence Distribution</h3>',
-            '    <span class="card-meta">Softmax Probabilities</span>',
+            '    <span class="card-meta">Softmax Spectrum</span>',
             '  </div>',
         ]
 
@@ -786,10 +806,10 @@ with col_results:
             <div class="vitrine-card" style="text-align: center; padding: 3.5rem 1.5rem;">
                 <div style="font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.6;">✧</div>
                 <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #f8f7fa; margin-bottom: 0.5rem;">
-                    Awaiting Garment Selection
+                    Awaiting Garment Specimen
                 </h3>
                 <p style="color: #a19fad; font-size: 0.88rem; max-width: 360px; margin: 0 auto; line-height: 1.6;">
-                    Click any of the 10 preset fashion garments on the left or upload your own apparel photograph to see instant deep learning predictions.
+                    Click any of the 10 preset fashion garments on the left or upload an apparel photograph to see instant deep learning predictions.
                 </p>
                 <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap;">
                     <span class="telemetry-badge">10 Apparel Classes</span>
