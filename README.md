@@ -1,41 +1,41 @@
-# FashionClassifier ✦ Atelier Synthétique
+# FashionClassifier ✦ AI Fashion Item Classifier
 
-An editorial, haute couture AI Fashion Item Classifier built with **Streamlit** and **TensorFlow/Keras** trained on the Fashion-MNIST dataset. Powered by the *Atelier Synthétique* luxury dark-mode design system.
+A modern, high-performance AI Fashion Item Classifier built with **Streamlit** and **TensorFlow/Keras** trained on the Fashion-MNIST dataset, featuring a sleek, professional dark-mode user interface.
 
 ![Fashion Classifier](https://img.shields.io/badge/TensorFlow-2.15-orange?logo=tensorflow)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.30-FF4B4B?logo=streamlit)
 ![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
-![Design](https://img.shields.io/badge/Design-Atelier%20Synth%C3%A9tique-8B5CF6)
+![Design](https://img.shields.io/badge/Theme-Modern%20Dark%20UI-8B5CF6)
 
 ---
 
 ## Features
 
-- **Haute Couture Aesthetic**: Designed using Google Stitch (*Atelier Synthétique* system) featuring Obsidian void backgrounds, electric violet highlights, and atmospheric glassmorphism.
+- **Professional Dark Theme**: Clean obsidian dark background with electric violet accents and modern glassmorphic cards.
 - **Deep Convolutional Neural Network**: High-precision 3-layer Conv2D + MaxPooling architecture trained on Zalando Research Fashion-MNIST.
-- **Calibrated Softmax Probability Spectrum**: Real-time confidence scores and full 10-class probability distribution bars.
-- **Editorial Fashion Intelligence**: Instant categorization with French couture taxonomy, silhouette classifications, fabric archetypes, and seasonal styling recommendations.
-- **Interactive Specimen Testing**:
-  - One-click instant curation from pre-loaded test specimens.
-  - Drag-and-drop custom photograph uploader with live 28×28 grayscale tensor normalization preview.
-- **Low-Latency Neural Telemetry**: Microsecond execution timers and live model telemetry metrics.
+- **Calibrated Softmax Probability Spectrum**: Real-time confidence scores and full 10-category probability distribution bars.
+- **Fashion Details & Styling Guide**: Category classification, garment description, fit details, fabric composition, and seasonal styling recommendations.
+- **Instant Preset Selection & Upload**:
+  - One-click instant selection from 10 high-resolution pre-loaded garment samples.
+  - Drag-and-drop custom photograph uploader with automatic background contrast normalization.
+- **Low-Latency Neural Telemetry**: Real-time execution timer (in milliseconds) and model status indicators.
 
 ---
 
-## 10 Fashion Taxa Classified
+## 10 Fashion Categories Classified
 
-| Class ID | Garment Category | French Editorial Taxon |
+| Class ID | Category Name | Description |
 | :---: | :--- | :--- |
-| `0` | **T-shirt / Top** | *Haut & T-shirt Essentiel* |
-| `1` | **Trouser** | *Pantalon de Costume* |
-| `2` | **Pullover** | *Pull en Tricot Fin* |
-| `3` | **Dress** | *Robe de Créateur* |
-| `4` | **Coat** | *Manteau Architectural* |
-| `5` | **Sandal** | *Sandale Minimaliste* |
-| `6` | **Shirt** | *Chemise Structurée* |
-| `7` | **Sneaker** | *Baskets Urbaines* |
-| `8` | **Bag** | *Sac Iconique* |
-| `9` | **Ankle Boot** | *Bottine Contemporaine* |
+| `0` | **T-shirt / Top** | Casual Everyday Wardrobe Essential |
+| `1` | **Trouser** | Structured Formal & Casual Pants |
+| `2` | **Pullover** | Knitwear & Layering Sweater |
+| `3` | **Dress** | Formal & Occasion Wear |
+| `4` | **Coat** | Outerwear & Overcoat |
+| `5` | **Sandal** | Open-Toe Summer Footwear |
+| `6` | **Shirt** | Button-Up Collared Apparel |
+| `7` | **Sneaker** | Athletic & Street Footwear |
+| `8` | **Bag** | Handbag & Carry Accessory |
+| `9` | **Ankle Boot** | All-Weather Ankle Footwear |
 
 ---
 

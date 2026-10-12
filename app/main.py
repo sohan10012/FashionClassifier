@@ -25,7 +25,7 @@ def render_html(html_str: str):
     st.markdown(clean_html, unsafe_allow_html=True)
 
 # ---------------------------------------------------------------------------
-# Custom CSS: Dark Mode Haute Couture Aesthetic
+# Custom CSS: Modern Dark Mode UI
 # ---------------------------------------------------------------------------
 render_html(
     """
@@ -59,7 +59,7 @@ render_html(
         font-family: 'JetBrains Mono', monospace !important;
     }
 
-    /* Top Editorial Header */
+    /* Top Header */
     .top-header {
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         padding-bottom: 1.25rem;
@@ -129,8 +129,8 @@ render_html(
         100% { opacity: 1; transform: scale(1); }
     }
 
-    /* Cohesive Vitrine Cards */
-    .vitrine-card {
+    /* Cohesive Showcase Cards */
+    .showcase-card {
         background: rgba(18, 17, 26, 0.75);
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 10px;
@@ -216,18 +216,6 @@ render_html(
     }
 
     /* Image Display Frame */
-    .image-stage {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: rgba(10, 10, 15, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 8px;
-        padding: 1.25rem;
-        margin-top: 0.5rem;
-    }
-
     [data-testid="stImage"] img {
         border-radius: 8px !important;
         border: 1px solid rgba(255, 255, 255, 0.12) !important;
@@ -426,7 +414,7 @@ CLASS_METADATA = {
         "name": "T-shirt / Top",
         "description": "Casual Everyday Wardrobe Essential",
         "icon": "👕",
-        "silhouette": "Minimalist Regular Fit",
+        "fit": "Minimalist Regular Fit",
         "pairing": "Tailored trousers or raw dark denim",
         "season": "Spring / Summer",
         "fabric": "Supima Cotton / Breathable Jersey",
@@ -435,16 +423,16 @@ CLASS_METADATA = {
         "name": "Trouser",
         "description": "Structured Formal & Casual Pants",
         "icon": "👖",
-        "silhouette": "Structured Straight-Leg Cut",
+        "fit": "Structured Straight-Leg Cut",
         "pairing": "Oversized blazer, button-up shirt, or knitwear",
         "season": "All-Season Transition",
-        "fabric": "Virgin Wool Blend / Gabardine Twill",
+        "fabric": "Virgin Wool Blend / Cotton Twill",
     },
     2: {
         "name": "Pullover",
         "description": "Knitwear & Layering Sweater",
         "icon": "🧶",
-        "silhouette": "Relaxed Cozy Silhouette",
+        "fit": "Relaxed Cozy Fit",
         "pairing": "Pleated midi skirt or selvedge chinos",
         "season": "Autumn / Winter",
         "fabric": "Merino Wool / Cashmere Blend",
@@ -453,34 +441,34 @@ CLASS_METADATA = {
         "name": "Dress",
         "description": "Formal & Occasion Wear",
         "icon": "👗",
-        "silhouette": "Fluid Column / A-Line Drape",
+        "fit": "Fluid Column / A-Line Cut",
         "pairing": "Structured trench coat & block heels",
         "season": "Cocktail / Summer Evening",
-        "fabric": "Mulberry Silk / Crêpe de Chine",
+        "fabric": "Mulberry Silk / Chiffon Fabric",
     },
     4: {
         "name": "Coat",
         "description": "Outerwear & Overcoat",
         "icon": "🧥",
-        "silhouette": "Double-Breasted Statement Coat",
+        "fit": "Double-Breasted Statement Cut",
         "pairing": "Monochrome knit sweater & leather boots",
         "season": "Winter Wardrobe",
-        "fabric": "Melton Wool / Heavyweight Twill",
+        "fabric": "Warm Wool / Heavyweight Twill",
     },
     5: {
         "name": "Sandal",
         "description": "Open-Toe Summer Footwear",
         "icon": "👡",
-        "silhouette": "Sculpted Strap Design",
+        "fit": "Sculpted Strap Design",
         "pairing": "Linen trousers, shorts, or sundress",
         "season": "High Summer",
-        "fabric": "Smooth Nappa Leather / Canvas",
+        "fabric": "Smooth Leather / Breathable Canvas",
     },
     6: {
         "name": "Shirt",
         "description": "Button-Up Collared Apparel",
         "icon": "👔",
-        "silhouette": "Crisp Tailored Collar & Cuffs",
+        "fit": "Crisp Tailored Collar & Cuffs",
         "pairing": "High-waist trousers or pencil skirt",
         "season": "Year-Round Wardrobe",
         "fabric": "Egyptian Cotton Poplin / Oxford Weave",
@@ -489,7 +477,7 @@ CLASS_METADATA = {
         "name": "Sneaker",
         "description": "Athletic & Street Footwear",
         "icon": "👟",
-        "silhouette": "Low-Profile Athletic Silhouette",
+        "fit": "Low-Profile Athletic Cut",
         "pairing": "Casual suit, denim, or relaxed joggers",
         "season": "All-Year Streetwear",
         "fabric": "Full-Grain Leather / Technical Mesh",
@@ -498,16 +486,16 @@ CLASS_METADATA = {
         "name": "Bag",
         "description": "Handbag & Carry Accessory",
         "icon": "👜",
-        "silhouette": "Architectural Geometric Tote",
+        "fit": "Structured Geometric Design",
         "pairing": "Complements any casual or tailored outfit",
         "season": "Perennial Essential",
-        "fabric": "Saffiano Leather / Coated Canvas",
+        "fabric": "Textured Leather / Coated Canvas",
     },
     9: {
         "name": "Ankle Boot",
         "description": "All-Weather Ankle Footwear",
         "icon": "🥾",
-        "silhouette": "Block-Heel Ankle Profile",
+        "fit": "Block-Heel Ankle Cut",
         "pairing": "Cropped denim, chinos, or long trench coat",
         "season": "Autumn / Winter",
         "fabric": "Polished Calfskin / Suede",
@@ -634,7 +622,7 @@ with col_input:
     # Card 1: Curated Selection & Upload
     render_html(
         """
-        <div class="vitrine-card">
+        <div class="showcase-card">
             <div class="card-title-bar">
                 <h3 class="card-title">✦ Garment Selection</h3>
                 <span class="card-meta">Presets & Upload</span>
@@ -692,9 +680,9 @@ with col_input:
         w, h = active_img.size
         render_html(
             f"""
-            <div class="vitrine-card" style="margin-top: 1.25rem;">
+            <div class="showcase-card" style="margin-top: 1.25rem;">
                 <div class="card-title-bar">
-                    <h3 class="card-title">✦ Specimen Vitrine</h3>
+                    <h3 class="card-title">✦ Selected Garment Preview</h3>
                     <span class="card-meta">{w}×{h} PX • {active_img.format or 'PNG'}</span>
                 </div>
                 <div style="font-size: 0.8rem; color: #cbc3d7; margin-bottom: 0.75rem;">
@@ -748,8 +736,8 @@ with col_results:
 
                 <div class="styling-grid">
                     <div class="styling-cell">
-                        <div class="styling-label">Silhouette</div>
-                        <div class="styling-val">{top_meta['silhouette']}</div>
+                        <div class="styling-label">Style & Fit</div>
+                        <div class="styling-val">{top_meta['fit']}</div>
                     </div>
                     <div class="styling-cell">
                         <div class="styling-label">Fabric Profile</div>
@@ -770,7 +758,7 @@ with col_results:
 
         # Full 10-Class Confidence Distribution Spectrum
         bars_html = [
-            '<div class="vitrine-card">',
+            '<div class="showcase-card">',
             '  <div class="card-title-bar">',
             '    <h3 class="card-title">✦ Class Confidence Distribution</h3>',
             '    <span class="card-meta">Softmax Spectrum</span>',
@@ -803,10 +791,10 @@ with col_results:
     else:
         render_html(
             """
-            <div class="vitrine-card" style="text-align: center; padding: 3.5rem 1.5rem;">
+            <div class="showcase-card" style="text-align: center; padding: 3.5rem 1.5rem;">
                 <div style="font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.6;">✧</div>
                 <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #f8f7fa; margin-bottom: 0.5rem;">
-                    Awaiting Garment Specimen
+                    Awaiting Garment Selection
                 </h3>
                 <p style="color: #a19fad; font-size: 0.88rem; max-width: 360px; margin: 0 auto; line-height: 1.6;">
                     Click any of the 10 preset fashion garments on the left or upload an apparel photograph to see instant deep learning predictions.
