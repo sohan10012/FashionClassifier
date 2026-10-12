@@ -649,18 +649,16 @@ with col_left:
 
         sub_col1, sub_col2 = st.columns([1.2, 0.8])
         with sub_col1:
-            st.image(
-                selected_image,
-                caption=f"Source: {image_source_label}",
-                use_container_width=True,
-            )
+            try:
+                st.image(selected_image, caption=f"Source: {image_source_label}", use_column_width=True)
+            except TypeError:
+                st.image(selected_image, caption=f"Source: {image_source_label}", use_container_width=True)
         with sub_col2:
             img_tensor, gray_preview = preprocess_for_inference(selected_image)
-            st.image(
-                gray_preview,
-                caption="Normalized 28×28 Tensor",
-                use_container_width=True,
-            )
+            try:
+                st.image(gray_preview, caption="Normalized 28×28 Tensor", use_column_width=True)
+            except TypeError:
+                st.image(gray_preview, caption="Normalized 28×28 Tensor", use_container_width=True)
             st.caption("Preprocessing: Lanczos Resample → Grayscale → [0.0, 1.0] Tensor")
 
         classify_clicked = st.button("✦ Diagnose Specimen with Neural Engine", key="classify_btn")
